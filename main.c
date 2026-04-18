@@ -158,7 +158,6 @@ void drawStarfield() {
 }
 
 // --- UPGRADED SOLAR SYSTEM HELPER ---
-// --- UPGRADED SOLAR SYSTEM HELPER ---
 void drawSolarSystem(float sceneTime, float destabFactor) {
     glDisable(GL_LIGHTING); 
     
@@ -185,7 +184,6 @@ void drawSolarSystem(float sceneTime, float destabFactor) {
     glEnable(GL_LIGHTING); 
 
     // The 9 Planets
-    // FIX 1: Boosted the base speeds of the outer planets so they clearly revolve!
     float planets[9][6] = {
         { 3.5f,  0.15f, 0.6f, 0.6f, 0.6f, 4.0f },  // Mercury 
         { 5.0f,  0.25f, 0.9f, 0.6f, 0.2f, 3.0f },  // Venus 
@@ -238,7 +236,7 @@ void drawSolarSystem(float sceneTime, float destabFactor) {
     }
 }
 
-// --- THE NEW "LIVING" PAINTING (NO TEXTURE NEEDED) ---
+// --- THE NEW "LIVING" PAINTING  ---
 void drawPainting(float pulseIntensity) {
     glDisable(GL_LIGHTING);
     
@@ -251,7 +249,6 @@ void drawPainting(float pulseIntensity) {
     glPopMatrix();
 
     // Canvas Background (Deep Space Black)
-    // FIX 1: We scale down the pulse so the red and blue never max out to Neon Pink!
     float safeGlow = pulseIntensity * 0.15f; 
     glColor3f(0.05f + safeGlow, 0.0f, 0.1f + (safeGlow * 1.5f)); 
     
@@ -672,7 +669,7 @@ void renderScene5(float sceneTime) {
             glDisable(GL_DEPTH_TEST);
             glDisable(GL_LIGHTING);
 
-            // Draw "THANK YOU" in white text
+            //"THANK YOU" 
             glColor3f(1.0f, 1.0f, 1.0f); 
             const char* endMsg = "THANK YOU";
             renderBitmapString(width / 2 - 45, height / 2, GLUT_BITMAP_HELVETICA_18, endMsg);
@@ -685,11 +682,10 @@ void renderScene5(float sceneTime) {
             glMatrixMode(GL_MODELVIEW);
             glPopMatrix();
             
-            // Return immediately so we DON'T draw the gallery room anymore
             return; 
         }
 
-        // --- NORMAL GALLERY RENDERING (If we haven't cut to black yet) ---
+        // --- NORMAL GALLERY RENDERING ---
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         drawGalleryRoom();
         
@@ -801,6 +797,7 @@ void timer(int value) {
 void reshape(int w, int h) {
     if (h == 0) h = 1;
     glViewport(0, 0, w, h); 
+    
     float ratio = w * 1.0 / h;
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
